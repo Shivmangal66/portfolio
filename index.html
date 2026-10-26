@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Shiv Mangal — Aspiring Data Analyst skilled in SQL, Excel, Power BI, Tableau and Python.">
-<title>Shiv Mangal | Data Analyst</title>
+<meta name="description" content="Shiv Mangal — Aspiring Data Analyst specializing in Excel, SQL, Power BI, Tableau, dashboards and data visualization.">
+
+<title>Shiv Mangal | Data Analyst Portfolio</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 :root {
-  --bg: #080b12;
-  --panel: #101621;
-  --panel-light: #151e2c;
-  --text: #f3f6fc;
-  --muted: #9aa8bc;
-  --blue: #7ca7ff;
-  --cyan: #70e1df;
-  --border: rgba(255,255,255,.09);
+  --bg: #070b14;
+  --surface: #0d1423;
+  --surface2: #111d30;
+  --text: #f1f5f9;
+  --muted: #98a8bd;
+  --cyan: #42e8e0;
+  --blue: #5896ff;
+  --purple: #a78bfa;
+  --border: rgba(148, 163, 184, .15);
 }
 
 * {
@@ -29,44 +29,80 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', sans-serif;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .container {
-  width: min(1120px, 90%);
+  width: min(1160px, 90%);
   margin: auto;
 }
 
-nav {
+/* BACKGROUND EFFECTS */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(40, 120, 255, .13), transparent 35%),
+    radial-gradient(ellipse at 85% 35%, rgba(66, 232, 224, .09), transparent 35%),
+    radial-gradient(ellipse at 55% 90%, rgba(139, 92, 246, .09), transparent 40%);
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(120, 160, 210, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 160, 210, .12) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+/* NAVBAR */
+
+header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background: rgba(8,11,18,.88);
+  z-index: 100;
+  background: rgba(7, 11, 20, .82);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
 }
 
-.nav-inner {
+.nav {
   min-height: 76px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 25px;
 }
 
 .logo {
-  font: 700 1.6rem 'Space Grotesk', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 900;
   letter-spacing: -1px;
 }
 
@@ -76,469 +112,828 @@ nav {
 
 .nav-links {
   display: flex;
+  align-items: center;
   gap: 27px;
+}
+
+.nav-links a {
   color: var(--muted);
-  font-size: .9rem;
+  font-size: .88rem;
+  transition: .25s;
 }
 
 .nav-links a:hover {
   color: var(--cyan);
 }
 
-.button {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-weight: 700;
+  gap: 9px;
+  padding: 12px 19px;
+  border-radius: 10px;
   font-size: .9rem;
-  transition: .25s;
+  font-weight: 750;
+  transition: transform .25s, box-shadow .25s, background .25s;
 }
 
-.button:hover {
+.btn:hover {
   transform: translateY(-3px);
 }
 
-.primary {
-  background: var(--blue);
-  color: #08101e;
+.btn-primary {
+  color: #061019;
+  background: linear-gradient(120deg, var(--cyan), #7df6d5);
+  box-shadow: 0 8px 30px rgba(66, 232, 224, .12);
 }
 
-.secondary {
-  border: 1px solid var(--border);
-  background: var(--panel);
+.btn-primary:hover {
+  box-shadow: 0 10px 35px rgba(66, 232, 224, .28);
 }
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, .025);
+}
+
+.btn-outline:hover {
+  border-color: var(--cyan);
+}
+
+/* HERO */
 
 .hero {
-  min-height: 660px;
+  position: relative;
+  min-height: 680px;
   display: flex;
   align-items: center;
-  position: relative;
+  padding: 95px 0 80px;
   overflow: hidden;
-  padding: 100px 0;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  right: -150px;
-  top: 30px;
-  background: #4169e1;
-  opacity: .12;
-  filter: blur(140px);
-  border-radius: 50%;
-  pointer-events: none;
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  align-items: center;
+  gap: 55px;
 }
 
-.hero-content {
-  position: relative;
-  max-width: 800px;
-}
-
-.badge {
+.availability {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--cyan);
-  border: 1px solid rgba(112,225,223,.22);
-  background: rgba(112,225,223,.06);
   padding: 7px 13px;
-  border-radius: 30px;
-  font-size: .82rem;
-  margin-bottom: 25px;
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
-}
-
-h1, h2, h3 {
-  font-family: 'Space Grotesk', sans-serif;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: clamp(3rem, 7vw, 5.7rem);
-  letter-spacing: -4px;
+  border-radius: 50px;
+  color: #b5f8e9;
+  background: rgba(52, 211, 153, .07);
+  border: 1px solid rgba(52, 211, 153, .22);
+  font-size: .8rem;
   margin-bottom: 24px;
 }
 
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 13px #34d399;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5.25rem);
+  letter-spacing: -4px;
+  line-height: 1.06;
+  margin-bottom: 20px;
+}
+
 .gradient {
-  background: linear-gradient(100deg, var(--blue), var(--cyan));
+  background: linear-gradient(100deg, var(--cyan), #7daaff 65%, var(--purple));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.hero p {
-  max-width: 650px;
-  font-size: 1.08rem;
+.hero-description {
+  max-width: 560px;
   color: var(--muted);
-  margin-bottom: 30px;
+  font-size: 1.03rem;
+  margin-bottom: 29px;
 }
 
 .hero-actions {
   display: flex;
-  gap: 14px;
   flex-wrap: wrap;
+  gap: 13px;
 }
 
-.hero-note {
-  margin-top: 55px;
-  padding-top: 22px;
-  border-top: 1px solid var(--border);
+.hero-stats {
   display: flex;
-  gap: 45px;
+  gap: 32px;
   flex-wrap: wrap;
+  margin-top: 43px;
 }
 
-.hero-note strong {
+.stat strong {
   display: block;
-  font-size: 1.1rem;
+  font-size: 1.35rem;
+  letter-spacing: -.5px;
 }
 
-.hero-note span {
+.stat span {
   color: var(--muted);
-  font-size: .83rem;
+  font-size: .78rem;
 }
 
-section {
-  padding: 95px 0;
-  scroll-margin-top: 70px;
+/* DASHBOARD VISUAL */
+
+.dashboard-stage {
+  position: relative;
+  min-width: 0;
+  perspective: 1000px;
 }
 
-.section-label {
-  color: var(--cyan);
-  font-size: .76rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
+.dashboard-window {
+  position: relative;
+  padding: 19px;
+  border: 1px solid rgba(125, 180, 255, .25);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(17, 29, 48, .96), rgba(8, 15, 27, .97));
+  box-shadow: 0 35px 100px rgba(0, 0, 0, .45),
+              0 0 65px rgba(66, 232, 224, .07);
+  transform: rotateY(-5deg) rotateX(2deg);
+  animation: float 7s ease-in-out infinite;
 }
 
-.section-title {
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  letter-spacing: -1.5px;
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotateY(-5deg) rotateX(2deg); }
+  50% { transform: translateY(-10px) rotateY(-3deg) rotateX(1deg); }
 }
 
-.section-description {
-  max-width: 650px;
-  color: var(--muted);
-  margin-top: 15px;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1.3fr .7fr;
-  gap: 22px;
-  margin-top: 35px;
-}
-
-.card {
-  background: linear-gradient(145deg, var(--panel), #0c111b);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 30px;
-  transition: transform .25s, border-color .25s;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(124,167,255,.35);
-}
-
-.card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: var(--muted);
-  font-size: .95rem;
-}
-
-.focus-list {
-  display: grid;
-  gap: 20px;
-}
-
-.focus-item {
+.dash-header {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.icon {
-  min-width: 43px;
-  height: 43px;
+.dash-title {
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.dash-subtitle {
+  color: var(--muted);
+  font-size: .68rem;
+}
+
+.live-badge {
+  color: var(--cyan);
+  border: 1px solid rgba(66, 232, 224, .25);
+  background: rgba(66, 232, 224, .07);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: .63rem;
+}
+
+.dash-kpis {
   display: grid;
-  place-items: center;
-  background: var(--panel-light);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dash-kpi {
+  padding: 12px 10px;
+  background: rgba(255, 255, 255, .035);
+  border: 1px solid var(--border);
   border-radius: 10px;
-  color: var(--cyan);
-  font-size: 1.2rem;
 }
 
-.focus-item strong {
+.dash-kpi span {
   display: block;
-}
-
-.focus-item small {
   color: var(--muted);
+  font-size: .62rem;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: 35px;
+.dash-kpi strong {
+  display: block;
+  font-size: 1.05rem;
+  margin: 4px 0;
 }
 
-.skill {
-  background: var(--panel);
+.dash-kpi small {
+  color: var(--cyan);
+  font-size: .61rem;
+}
+
+.chart-panel {
+  margin-top: 13px;
+  padding: 14px;
+  background: rgba(255, 255, 255, .025);
   border: 1px solid var(--border);
-  padding: 24px 18px;
   border-radius: 12px;
 }
 
-.skill-icon {
+.chart-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: .72rem;
+}
+
+.chart-heading span {
+  color: var(--muted);
+  font-size: .64rem;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.bottom-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 13px;
+}
+
+.mini-panel {
+  min-width: 0;
+  padding: 12px;
+  background: rgba(255, 255, 255, .025);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.mini-title {
+  color: var(--muted);
+  font-size: .66rem;
+  margin-bottom: 10px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: .59rem;
+  color: #cbd5e1;
+}
+
+.bar-track {
+  height: 5px;
+  flex: 1;
+  background: #26354a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+}
+
+.floating-label {
+  position: absolute;
+  padding: 11px 15px;
+  background: rgba(15, 27, 44, .95);
+  border: 1px solid rgba(66, 232, 224, .22);
+  border-radius: 11px;
+  box-shadow: 0 15px 35px #0005;
+  font-size: .75rem;
+}
+
+.floating-label strong {
   color: var(--cyan);
-  font-size: 1.7rem;
+}
+
+.float-one {
+  right: -20px;
+  top: 45px;
+}
+
+.float-two {
+  left: -27px;
+  bottom: 30px;
+}
+
+/* SECTIONS */
+
+section:not(.hero) {
+  padding: 92px 0;
+  scroll-margin-top: 75px;
+}
+
+.section-heading {
+  margin-bottom: 37px;
+}
+
+.kicker {
+  color: var(--cyan);
+  font-size: .74rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  letter-spacing: -1.7px;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 13px;
+  max-width: 650px;
+}
+
+/* ABOUT */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 22px;
+}
+
+.panel {
+  background: linear-gradient(145deg, rgba(17, 29, 48, .85), rgba(10, 17, 30, .92));
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 28px;
+  transition: border-color .25s, transform .25s;
+}
+
+.panel:hover {
+  border-color: rgba(66, 232, 224, .28);
+}
+
+.panel h3 {
+  font-size: 1.13rem;
   margin-bottom: 12px;
 }
 
-.skill h3 {
+.panel p {
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.about-points {
+  display: grid;
+  gap: 19px;
+}
+
+.about-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.point-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 43px;
+  height: 43px;
+  border-radius: 12px;
+  background: rgba(66, 232, 224, .08);
+  color: var(--cyan);
+  border: 1px solid rgba(66, 232, 224, .12);
+}
+
+.about-point strong {
+  display: block;
+  font-size: .93rem;
+}
+
+.about-point span {
+  display: block;
+  color: var(--muted);
+  font-size: .8rem;
+  margin-top: 2px;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  background: rgba(13, 20, 35, .82);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  transition: transform .25s, border-color .25s;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(66, 232, 224, .4);
+}
+
+.skill-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: rgba(88, 150, 255, .1);
+  border: 1px solid rgba(88, 150, 255, .2);
+  border-radius: 12px;
+  color: var(--cyan);
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.skill-card h3 {
   font-size: 1rem;
   margin-bottom: 5px;
 }
 
-.skill p {
+.skill-card p {
   color: var(--muted);
-  font-size: .82rem;
+  font-size: .8rem;
 }
 
-.project-grid {
+/* PROJECTS */
+
+.projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 35px;
+  gap: 22px;
+}
+
+.project-card {
+  overflow: hidden;
+  padding: 0;
 }
 
 .project-visual {
-  height: 210px;
-  border-radius: 10px;
-  background:
-    radial-gradient(circle at 80% 20%, #23466a, transparent 40%),
-    linear-gradient(135deg, #111d30, #0c1220);
-  border: 1px solid var(--border);
+  min-height: 215px;
   display: grid;
   place-items: center;
-  margin-bottom: 24px;
-  overflow: hidden;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(88, 150, 255, .17), transparent 50%),
+    linear-gradient(135deg, #101c30, #0a1120);
+  border-bottom: 1px solid var(--border);
 }
 
-.dashboard-art {
-  width: 80%;
+.project-dashboard {
+  width: min(390px, 100%);
   padding: 15px;
-  border: 1px solid #33465f;
-  background: #0a111d;
-  border-radius: 8px;
-  transform: rotate(-2deg);
+  background: #080f1c;
+  border: 1px solid #293c56;
+  border-radius: 12px;
+  box-shadow: 0 18px 45px #0005;
 }
 
-.dashboard-top {
-  color: var(--cyan);
-  font-size: .7rem;
-  margin-bottom: 15px;
-}
-
-.metric-row {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 8px;
-}
-
-.metric {
-  height: 35px;
-  border-radius: 4px;
-  background: #1b2b40;
-  border-top: 2px solid var(--blue);
-}
-
-.bar-chart {
+.project-dashboard-title {
   display: flex;
-  align-items: end;
+  justify-content: space-between;
+  font-size: .66rem;
+  color: #e2e8f0;
+  margin-bottom: 13px;
+}
+
+.project-dashboard-title span {
+  color: var(--cyan);
+}
+
+.project-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+}
+
+.metric-box {
+  padding: 9px;
+  background: #111d30;
+  border-radius: 7px;
+}
+
+.metric-box span {
+  display: block;
+  color: #94a3b8;
+  font-size: .54rem;
+}
+
+.metric-box strong {
+  display: block;
+  font-size: .85rem;
+  margin-top: 4px;
+}
+
+.project-bars {
+  display: flex;
   height: 65px;
+  gap: 8px;
+  align-items: end;
   padding-top: 12px;
 }
 
-.bar-chart span {
+.project-bars span {
   flex: 1;
-  background: linear-gradient(var(--cyan), #4169e1);
+  background: linear-gradient(to top, #456cf4, #42e8e0);
   border-radius: 3px 3px 0 0;
+  min-height: 8px;
 }
 
-.big-icon {
-  font-size: 4rem;
+.project-content {
+  padding: 25px;
+}
+
+.project-content h3 {
+  font-size: 1.2rem;
+}
+
+.project-content p {
+  color: var(--muted);
+  font-size: .88rem;
+  margin-top: 11px;
 }
 
 .tags {
   display: flex;
-  gap: 8px;
   flex-wrap: wrap;
-  margin-top: 18px;
+  gap: 8px;
+  margin: 17px 0;
 }
 
 .tag {
-  font-size: .75rem;
-  color: var(--cyan);
-  background: rgba(112,225,223,.07);
-  border: 1px solid rgba(112,225,223,.15);
+  font-size: .72rem;
+  color: #b9f8f0;
   padding: 5px 10px;
-  border-radius: 5px;
+  border: 1px solid rgba(66, 232, 224, .17);
+  border-radius: 30px;
+  background: rgba(66, 232, 224, .055);
 }
 
-.project-status {
-  color: var(--blue);
-  font-size: .82rem;
-  margin-top: 18px;
+.project-note {
+  color: var(--muted);
+  font-size: .76rem;
 }
+
+/* EDUCATION */
 
 .education-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
-  margin-top: 35px;
 }
 
-.eyebrow {
+.education-label {
   color: var(--cyan);
-  font-size: .78rem;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-size: .72rem;
+  letter-spacing: 1.8px;
+  font-weight: 800;
   margin-bottom: 12px;
 }
 
-.year {
+.education-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 9px;
+}
+
+.education-card p {
   color: var(--muted);
-  font-size: .85rem;
-  margin-top: 12px;
+  font-size: .88rem;
 }
 
-.certificate-grid {
+.cert-list {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
-  margin-top: 35px;
+  gap: 13px;
+  margin-top: 17px;
 }
 
-.certificate {
-  padding: 22px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+.cert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: .87rem;
 }
 
-.certificate span {
-  font-size: 1.5rem;
+.cert-check {
+  color: var(--cyan);
+  font-weight: 900;
 }
 
-.certificate h3 {
-  font-size: .98rem;
-  margin-top: 13px;
+/* CONTACT */
+
+.contact-section {
+  padding-bottom: 105px !important;
 }
 
 .contact-box {
-  margin-top: 35px;
+  position: relative;
+  overflow: hidden;
   padding: 45px;
+  border: 1px solid rgba(66, 232, 224, .2);
+  border-radius: 22px;
   background:
-    radial-gradient(circle at 90% 0%, #203d5b, transparent 45%),
-    var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 18px;
+    radial-gradient(ellipse at 100% 0%, rgba(66, 232, 224, .11), transparent 45%),
+    linear-gradient(120deg, #101a2d, #0b1424);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
 }
 
+.contact-box h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+}
+
 .contact-box p {
+  max-width: 620px;
   color: var(--muted);
-  margin-top: 12px;
-  max-width: 600px;
+  margin-top: 13px;
+  font-size: .92rem;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 .contact-links {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 15px;
   margin-top: 25px;
 }
 
+.contact-links a {
+  color: var(--muted);
+  font-size: .84rem;
+  border-bottom: 1px solid transparent;
+}
+
+.contact-links a:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+/* FOOTER */
+
 footer {
   border-top: 1px solid var(--border);
-  padding: 28px 0;
+  padding: 24px 0;
   color: var(--muted);
-  font-size: .85rem;
+  font-size: .79rem;
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
   gap: 15px;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 800px) {
+.footer-inner span:last-child {
+  color: var(--cyan);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 65px;
+  }
+
+  .hero {
+    padding-top: 75px;
+  }
+
+  .hero-copy {
+    max-width: 700px;
+  }
+
+  .dashboard-stage {
+    width: min(570px, 100%);
+    margin: auto;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .nav {
+    min-height: 66px;
+  }
+
   .nav-links {
     display: none;
   }
 
+  .nav > .btn {
+    padding: 10px 12px;
+    font-size: .78rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.7rem, 12vw, 4rem);
+    letter-spacing: -2.5px;
+  }
+
+  .hero-stats {
+    gap: 22px;
+  }
+
+  .dashboard-window {
+    padding: 12px;
+    transform: none;
+    animation: none;
+  }
+
+  .float-one {
+    right: -3px;
+    top: -23px;
+  }
+
+  .float-two {
+    left: -4px;
+    bottom: -28px;
+  }
+
+  section:not(.hero) {
+    padding: 66px 0;
+  }
+
   .about-grid,
-  .education-grid,
-  .project-grid {
+  .projects-grid,
+  .education-grid {
     grid-template-columns: 1fr;
   }
 
   .skills-grid {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
-  .certificate-grid {
-    grid-template-columns: repeat(2,1fr);
+  .skill-card {
+    padding: 17px;
+  }
+
+  .panel {
+    padding: 22px;
   }
 
   .contact-box {
+    padding: 28px 22px;
     flex-direction: column;
     align-items: flex-start;
-    padding: 28px;
   }
 
-  h1 {
-    letter-spacing: -2px;
+  .contact-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .bottom-panels {
+    gap: 8px;
+  }
+
+  .dash-kpi {
+    padding: 9px 7px;
+  }
+
+  .dash-kpi strong {
+    font-size: .88rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
   }
 }
 
-@media (max-width: 450px) {
-  .certificate-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-note {
-    gap: 20px;
-  }
-
-  section {
-    padding: 70px 0;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
   }
 }
 </style>
@@ -546,366 +941,574 @@ footer {
 
 <body>
 
-<nav>
-  <div class="container nav-inner">
+<div class="grid-bg"></div>
+
+<header>
+  <div class="container nav">
     <a class="logo" href="#home">SHIV<span>.</span></a>
 
-    <div class="nav-links">
+    <nav class="nav-links" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
-    </div>
+    </nav>
 
-    <a class="button secondary" href="#contact">Let's Connect ↗</a>
+    <a class="btn btn-outline" href="#contact">Let's Connect ↗</a>
   </div>
-</nav>
+</header>
 
 <main>
 
+<!-- HERO SECTION -->
+
 <section class="hero" id="home">
-  <div class="container hero-content">
+  <div class="container hero-layout">
 
-    <div class="badge">
-      <span class="status-dot"></span>
-      Aspiring Data Analyst
+    <div class="hero-copy">
+      <div class="availability">
+        <span class="status-dot"></span>
+        Aspiring Data Analyst · Open to Opportunities
+      </div>
+
+      <h1>
+        Hi, I'm<br>
+        <span class="gradient">Shiv Mangal.</span>
+      </h1>
+
+      <p class="hero-description">
+        I turn raw data into meaningful insights. I enjoy analyzing
+        information, discovering patterns and creating clear,
+        impactful dashboards using Excel, SQL, Power BI and Tableau.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projects">
+          Explore My Projects ↗
+        </a>
+
+        <a class="btn btn-outline" href="resume.pdf" download>
+          ↓ Download Resume
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>Excel</strong>
+          <span>Data Analysis</span>
+        </div>
+
+        <div class="stat">
+          <strong>SQL</strong>
+          <span>Data Querying</span>
+        </div>
+
+        <div class="stat">
+          <strong>Power BI</strong>
+          <span>Dashboards</span>
+        </div>
+      </div>
     </div>
 
-    <h1>
-      Hi, I'm Shiv.<br>
-      <span class="gradient">I make data useful.</span>
-    </h1>
+    <!-- Decorative dashboard illustration, not live business data -->
 
-    <p>
-      I'm a Computer Science Engineering student passionate about
-      Data Analytics, Business Intelligence and Data Visualization.
-      I use Excel, SQL, Power BI, Tableau and Python to explore data
-      and communicate meaningful insights.
-    </p>
-
-    <div class="hero-actions">
-      <a href="#projects" class="button primary">Explore My Work ↗</a>
-      <a href="#about" class="button secondary">More About Me ↓</a>
-    </div>
-
-    <div class="hero-note">
-      <div>
-        <strong>2028</strong>
-        <span>Expected Graduation</span>
+    <div class="dashboard-stage">
+      <div class="floating-label float-one">
+        <strong>↗ Data Insights</strong><br>
+        <span style="color:var(--muted)">Visual analytics</span>
       </div>
-      <div>
-        <strong>5+</strong>
-        <span>Analytics Tools</span>
+
+      <div class="dashboard-window">
+        <div class="dash-header">
+          <div>
+            <div class="dash-title">ANALYTICS OVERVIEW</div>
+            <div class="dash-subtitle">Interactive dashboard concept</div>
+          </div>
+
+          <span class="live-badge">● VISUAL DEMO</span>
+        </div>
+
+        <div class="dash-kpis">
+          <div class="dash-kpi">
+            <span>Revenue</span>
+            <strong>$48.2K</strong>
+            <small>↗ Sample KPI</small>
+          </div>
+
+          <div class="dash-kpi">
+            <span>Customers</span>
+            <strong>2,840</strong>
+            <small>Sample KPI</small>
+          </div>
+
+          <div class="dash-kpi">
+            <span>Growth</span>
+            <strong>18.6%</strong>
+            <small>Sample KPI</small>
+          </div>
+        </div>
+
+        <div class="chart-panel">
+          <div class="chart-heading">
+            <strong>Performance Trends</strong>
+            <span>Illustrative chart</span>
+          </div>
+
+          <svg class="chart-svg" viewBox="0 0 400 145"
+               role="img" aria-label="Illustrative analytics line chart">
+
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#42e8e0" stop-opacity=".28"/>
+                <stop offset="100%" stop-color="#42e8e0" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+
+            <g stroke="#29374b" stroke-width="1">
+              <line x1="0" y1="25" x2="400" y2="25"/>
+              <line x1="0" y1="55" x2="400" y2="55"/>
+              <line x1="0" y1="85" x2="400" y2="85"/>
+              <line x1="0" y1="115" x2="400" y2="115"/>
+            </g>
+
+            <path
+              d="M0 105 L48 90 L95 98 L145 62 L195 74 L245 43 L295 57 L345 23 L400 34 L400 130 L0 130 Z"
+              fill="url(#areaFill)"/>
+
+            <path
+              d="M0 105 L48 90 L95 98 L145 62 L195 74 L245 43 L295 57 L345 23 L400 34"
+              fill="none"
+              stroke="#42e8e0"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+
+            <g fill="#42e8e0">
+              <circle cx="48" cy="90" r="3"/>
+              <circle cx="145" cy="62" r="3"/>
+              <circle cx="245" cy="43" r="3"/>
+              <circle cx="345" cy="23" r="3"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="bottom-panels">
+          <div class="mini-panel">
+            <div class="mini-title">Category Breakdown</div>
+
+            <div class="bar-row">
+              <span>Sales</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:85%"></div>
+              </div>
+            </div>
+
+            <div class="bar-row">
+              <span>Growth</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:68%"></div>
+              </div>
+            </div>
+
+            <div class="bar-row">
+              <span>Users</span>
+              <div class="bar-track">
+                <div class="bar-fill" style="width:53%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-panel">
+            <div class="mini-title">Analysis Toolkit</div>
+
+            <div class="bar-row">
+              <span>Excel</span>
+              <span style="color:var(--cyan)">▰▰▰▰</span>
+            </div>
+
+            <div class="bar-row">
+              <span>SQL</span>
+              <span style="color:var(--cyan)">▰▰▰▰</span>
+            </div>
+
+            <div class="bar-row">
+              <span>Power BI</span>
+              <span style="color:var(--cyan)">▰▰▰▰</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <strong>01</strong>
-        <span>Deloitte Job Simulation</span>
+
+      <div class="floating-label float-two">
+        <strong>⌘ Data Analytics</strong><br>
+        <span style="color:var(--muted)">From data to decisions</span>
       </div>
     </div>
 
   </div>
 </section>
+
+<!-- ABOUT -->
 
 <section id="about">
   <div class="container">
 
-    <div class="section-label">01 — About Me</div>
-    <h2 class="section-title">Curious mind.<br><span class="gradient">Analytical approach.</span></h2>
-
-    <div class="about-grid">
-      <div class="card">
-        <h3>My Story</h3>
-        <p>
-          I'm Shiv Mangal, a Computer Science Engineering student at
-          IIMT College of Engineering, Greater Noida. My interests include
-          data analysis, business intelligence, reporting and dashboard
-          development.
-        </p>
-        <p>
-          I enjoy exploring datasets, identifying patterns and presenting
-          information in a clear, useful way. I'm looking for an
-          entry-level Data Analyst opportunity where I can apply my skills,
-          learn from experienced professionals and contribute to
-          data-informed decisions.
-        </p>
-      </div>
-
-      <div class="card focus-list">
-        <div class="focus-item">
-          <div class="icon">⌘</div>
-          <div>
-            <strong>Data Analysis</strong>
-            <small>Cleaning, exploring and understanding data.</small>
-          </div>
-        </div>
-
-        <div class="focus-item">
-          <div class="icon">▥</div>
-          <div>
-            <strong>Business Intelligence</strong>
-            <small>Dashboards, reporting and visual insights.</small>
-          </div>
-        </div>
-
-        <div class="focus-item">
-          <div class="icon">↗</div>
-          <div>
-            <strong>Continuous Learning</strong>
-            <small>Improving analytical and technical skills.</small>
-          </div>
-        </div>
-      </div>
+    <div class="section-heading">
+      <div class="kicker">01 / About Me</div>
+      <h2>Curious mind.<br><span class="gradient">Data-driven thinking.</span></h2>
+      <p>
+        I am developing practical skills to transform data into
+        useful insights, reports and visual stories.
+      </p>
     </div>
 
+    <div class="about-grid">
+
+      <div class="panel">
+        <h3>My Story</h3>
+
+        <p>
+          I'm Shiv Mangal, a Computer Science and Engineering student
+          at IIMT College of Engineering, Greater Noida. My interest
+          lies in data analytics, business intelligence and data
+          visualization. I work with Excel, SQL, Power BI and Tableau
+          to explore datasets, identify patterns and present findings
+          in an understandable way.
+        </p>
+
+        <p style="margin-top:14px">
+          I have also completed the Deloitte Data Analytics Job
+          Simulation and am continuing to develop my analytical and
+          technical skills through hands-on practice.
+        </p>
+      </div>
+
+      <div class="panel about-points">
+
+        <div class="about-point">
+          <div class="point-icon">⌕</div>
+          <div>
+            <strong>Analytical Thinking</strong>
+            <span>Explore information and identify useful patterns.</span>
+          </div>
+        </div>
+
+        <div class="about-point">
+          <div class="point-icon">▥</div>
+          <div>
+            <strong>Dashboard Development</strong>
+            <span>Present KPIs and findings through visual reports.</span>
+          </div>
+        </div>
+
+        <div class="about-point">
+          <div class="point-icon">↗</div>
+          <div>
+            <strong>Continuous Learning</strong>
+            <span>Build skills through projects and practical exercises.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- SKILLS -->
 
 <section id="skills">
   <div class="container">
 
-    <div class="section-label">02 — My Toolkit</div>
-    <h2 class="section-title">Skills & technologies</h2>
-    <p class="section-description">
-      The tools and capabilities I'm developing for data analysis
-      and business reporting.
-    </p>
+    <div class="section-heading">
+      <div class="kicker">02 / My Toolkit</div>
+      <h2>Skills & <span class="gradient">Technologies</span></h2>
+      <p>
+        Tools and capabilities I am developing for data analysis,
+        reporting and business intelligence.
+      </p>
+    </div>
 
     <div class="skills-grid">
 
-      <div class="skill">
-        <div class="skill-icon">▦</div>
+      <div class="skill-card">
+        <div class="skill-icon">X</div>
         <h3>Microsoft Excel</h3>
-        <p>Advanced · Reporting</p>
+        <p>Data cleaning, spreadsheets and reporting.</p>
       </div>
 
-      <div class="skill">
-        <div class="skill-icon">⌘</div>
+      <div class="skill-card">
+        <div class="skill-icon">SQL</div>
         <h3>SQL</h3>
-        <p>Data querying</p>
+        <p>Querying and exploring structured data.</p>
       </div>
 
-      <div class="skill">
-        <div class="skill-icon">▤</div>
-        <h3>Power BI</h3>
-        <p>Dashboards</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">◫</div>
-        <h3>Tableau</h3>
-        <p>Data visualization</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">🐍</div>
-        <h3>Python</h3>
-        <p>Basic · Data analysis</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">⌁</div>
-        <h3>Data Cleaning</h3>
-        <p>Data preparation</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">◩</div>
-        <h3>LibreOffice Calc</h3>
-        <p>Spreadsheets</p>
-      </div>
-
-      <div class="skill">
+      <div class="skill-card">
         <div class="skill-icon">▥</div>
-        <h3>Visualization</h3>
-        <p>Charts and dashboards</p>
+        <h3>Power BI</h3>
+        <p>Data visualization and dashboard creation.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">T</div>
+        <h3>Tableau</h3>
+        <p>Visual analytics and reporting.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">Py</div>
+        <h3>Python</h3>
+        <p>Basic programming and data analysis.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon">↗</div>
+        <h3>Data Analytics</h3>
+        <p>Data cleaning, interpretation and insights.</p>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- PROJECTS -->
 
 <section id="projects">
   <div class="container">
 
-    <div class="section-label">03 — Selected Work</div>
-    <h2 class="section-title">Projects & experience</h2>
-    <p class="section-description">
-      Practical learning experiences in analytics and dashboard creation.
-      I'll continue adding project details and work samples here.
-    </p>
+    <div class="section-heading">
+      <div class="kicker">03 / Selected Work</div>
+      <h2>Projects & <span class="gradient">Experience</span></h2>
+      <p>
+        A selection of my analytics learning and project experience.
+        Dashboard visuals below are illustrative until actual project
+        screenshots and datasets are added.
+      </p>
+    </div>
 
-    <div class="project-grid">
+    <div class="projects-grid">
 
-      <article class="card">
+      <article class="panel project-card">
+
         <div class="project-visual">
-          <div class="dashboard-art">
-            <div class="dashboard-top">DATA ANALYTICS · DASHBOARD</div>
-            <div class="metric-row">
-              <div class="metric"></div>
-              <div class="metric"></div>
-              <div class="metric"></div>
+          <div class="project-dashboard">
+
+            <div class="project-dashboard-title">
+              <strong>BUSINESS ANALYTICS</strong>
+              <span>POWER BI STYLE</span>
             </div>
-            <div class="bar-chart">
+
+            <div class="project-metrics">
+              <div class="metric-box">
+                <span>Total Records</span>
+                <strong>Dataset KPI</strong>
+              </div>
+
+              <div class="metric-box">
+                <span>Key Trend</span>
+                <strong>Analysis</strong>
+              </div>
+
+              <div class="metric-box">
+                <span>Insights</span>
+                <strong>Reports</strong>
+              </div>
+            </div>
+
+            <div class="project-bars">
               <span style="height:35%"></span>
               <span style="height:55%"></span>
-              <span style="height:42%"></span>
-              <span style="height:78%"></span>
-              <span style="height:62%"></span>
-              <span style="height:90%"></span>
+              <span style="height:44%"></span>
+              <span style="height:77%"></span>
+              <span style="height:61%"></span>
+              <span style="height:91%"></span>
               <span style="height:72%"></span>
+              <span style="height:100%"></span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="project-content">
+          <h3>Data Analytics & Visualization</h3>
+
+          <p>
+            Focused on understanding datasets, organizing information
+            and presenting analytical findings through visual reports
+            and dashboards.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Power BI</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Visualization</span>
+          </div>
+
+          <div class="project-note">
+            Portfolio concept — add your real dataset, findings and
+            published dashboard when available.
+          </div>
+        </div>
+
+      </article>
+
+      <article class="panel project-card">
+
+        <div class="project-visual">
+          <div style="text-align:center">
+            <div style="font-size:3.4rem;margin-bottom:8px">▥</div>
+
+            <div style="font-size:1.45rem;font-weight:900">
+              Deloitte
+            </div>
+
+            <div style="color:var(--cyan);font-size:.85rem">
+              DATA ANALYTICS JOB SIMULATION
+            </div>
+
+            <div style="color:var(--muted);font-size:.74rem;margin-top:12px">
+              Data · Analysis · Insights
             </div>
           </div>
         </div>
 
-        <div class="eyebrow">Dashboard Project</div>
-        <h3>Data Analytics Dashboard</h3>
+        <div class="project-content">
+          <h3>Deloitte Data Analytics Job Simulation</h3>
 
-        <p>
-          A dashboard project focused on presenting data through
-          visual reports. The dataset, business problem, KPIs and
-          findings can be added here to explain the actual project.
-        </p>
+          <p>
+            Completed a virtual job simulation involving data
+            analytics learning and the interpretation and presentation
+            of findings. This experience helped strengthen my
+            understanding of practical analytics workflows.
+          </p>
 
-        <div class="tags">
-          <span class="tag">Power BI</span>
-          <span class="tag">Data Visualization</span>
-          <span class="tag">Analytics</span>
-        </div>
+          <div class="tags">
+            <span class="tag">Deloitte</span>
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Reporting</span>
+          </div>
 
-        <div class="project-status">Project details to be added</div>
-      </article>
-
-      <article class="card">
-        <div class="project-visual">
-          <div style="text-align:center">
-            <div class="big-icon">📊</div>
-            <h3>Deloitte Australia</h3>
-            <p>Data Analytics Job Simulation</p>
+          <div class="project-note">
+            Add the certificate link and exact task details when ready.
           </div>
         </div>
 
-        <div class="eyebrow">Virtual Experience</div>
-        <h3>Deloitte Data Analytics Simulation</h3>
-
-        <p>
-          Completed a job simulation involving business data analysis,
-          data cleaning, analytical thinking and the presentation of
-          insights through dashboards and visual reports.
-        </p>
-
-        <div class="tags">
-          <span class="tag">Data Analysis</span>
-          <span class="tag">Business Insights</span>
-          <span class="tag">Reporting</span>
-        </div>
-
-        <div class="project-status">Completed · Job Simulation</div>
       </article>
 
     </div>
   </div>
 </section>
+
+<!-- EDUCATION -->
 
 <section id="education">
   <div class="container">
 
-    <div class="section-label">04 — Background</div>
-    <h2 class="section-title">Education & learning</h2>
+    <div class="section-heading">
+      <div class="kicker">04 / Background</div>
+      <h2>Education & <span class="gradient">Learning</span></h2>
+    </div>
 
     <div class="education-grid">
 
-      <div class="card">
-        <div class="eyebrow">Education</div>
-        <h3>Bachelor of Technology</h3>
+      <div class="panel education-card">
+        <div class="education-label">Education</div>
+
+        <h3>B.Tech — Computer Science and Engineering</h3>
+
         <p>
-          Computer Science and Engineering
+          IIMT College of Engineering<br>
+          Greater Noida, Uttar Pradesh
         </p>
-        <p>
-          IIMT College of Engineering, Greater Noida
+
+        <p style="margin-top:14px">
+          Expected Graduation: 2028
         </p>
-        <div class="year">Expected Graduation: 2028</div>
       </div>
 
-      <div class="card">
-        <div class="eyebrow">Professional Development</div>
-        <h3>Deloitte Australia</h3>
-        <p>
-          Data Analytics Job Simulation
-        </p>
-        <p>
-          Practical learning in business data analysis,
-          data cleaning and presenting insights.
-        </p>
+      <div class="panel education-card">
+        <div class="education-label">Certifications & Development</div>
+
+        <h3>Professional Learning</h3>
+
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>Deloitte Data Analytics Job Simulation</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>Data Analytics Certificate</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>Power BI Certificate</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>Microsoft Excel Certificate</span>
+          </div>
+
+          <div class="cert-item">
+            <span class="cert-check">✓</span>
+            <span>Salesforce Developer Workshop</span>
+          </div>
+        </div>
       </div>
 
     </div>
-
-    <div style="margin-top:55px">
-      <div class="section-label">Certifications</div>
-      <h2 class="section-title" style="font-size:2rem">Learning & credentials</h2>
-
-      <div class="certificate-grid">
-
-        <div class="certificate">
-          <span>✦</span>
-          <h3>Data Analytics Certificate</h3>
-        </div>
-
-        <div class="certificate">
-          <span>▤</span>
-          <h3>Power BI Certificate</h3>
-        </div>
-
-        <div class="certificate">
-          <span>◈</span>
-          <h3>Deloitte Data Analytics Job Simulation</h3>
-        </div>
-
-        <div class="certificate">
-          <span>▦</span>
-          <h3>Microsoft Excel Certificate</h3>
-        </div>
-
-        <div class="certificate">
-          <span>⌘</span>
-          <h3>Salesforce Developer Workshop</h3>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </section>
 
-<section id="contact">
-  <div class="container">
+<!-- CONTACT -->
 
-    <div class="section-label">05 — Get In Touch</div>
+<section id="contact" class="contact-section">
+  <div class="container">
 
     <div class="contact-box">
       <div>
-        <h2 class="section-title">Let's turn data<br>into <span class="gradient">insights.</span></h2>
+        <div class="kicker">05 / Let's Connect</div>
+
+        <h2>Let's turn data<br>
+          <span class="gradient">into insights.</span>
+        </h2>
 
         <p>
-          I'm interested in entry-level Data Analyst opportunities
-          where I can apply my analytical skills, contribute to
-          business problems and continue learning.
+          I am interested in entry-level data analytics opportunities,
+          internships and learning experiences where I can contribute,
+          strengthen my skills and grow with a team.
         </p>
 
         <div class="contact-links">
-          <a class="button primary"
-             href="mailto:shivmishra18373@gmail.com">
-            Email Me ↗
+          <a href="mailto:shivmishra18373@gmail.com">
+            Email
           </a>
 
-          <a class="button secondary"
-             href="https://www.linkedin.com/in/shiv-mangal-617a863b0/"
-             target="_blank"
-             rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/shiv-mangal-617a863b0"
+             target="_blank" rel="noopener noreferrer">
             LinkedIn ↗
           </a>
+
+          <a href="https://github.com/shivmangal66"
+             target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+          </a>
         </div>
+      </div>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary"
+           href="mailto:shivmishra18373@gmail.com?subject=Data%20Analyst%20Opportunity">
+          ✉ Email Me
+        </a>
+
+        <a class="btn btn-outline"
+           href="resume.pdf" download>
+          ↓ Download Resume
+        </a>
       </div>
     </div>
 
@@ -916,13 +1519,17 @@ footer {
 
 <footer>
   <div class="container footer-inner">
-    <span>© <span id="year"></span> Shiv Mangal</span>
-    <span>Designed with purpose. Driven by data.</span>
+    <span>
+      © <span id="year"></span> Shiv Mangal · Data Analyst Portfolio
+    </span>
+
+    <span>Designed with purpose. Driven by data. ✦</span>
   </div>
 </footer>
 
 <script>
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 </script>
 
 </body>
